@@ -1,14 +1,12 @@
-/* =====================================================================
+/* 
    猜数字小游戏 —— 前端样式（CSS 部分）
-   =====================================================================
-   本文件用到的知识点出处（前端2.pptx）：
+   本文件用到的知识点出处（）：
    ① 标签选择器：直接写标签名（body、button、input）
    ② 类选择器：以点号 . 开头（.card 对应 HTML 里 class="card"）
    ③ ID选择器：以井号 # 开头（#message 对应 HTML 里 id="message"）
    ④ 伪类选择器：以冒号 : 开头，定义特殊状态（button:hover 鼠标悬停）
    ⑤ 盒子模型：width / height / padding / margin / border-radius
-   ⑥ Flex 布局：display:flex + justify-content + align-items（居中神器）
-   ===================================================================== */
+   ⑥ Flex 布局：display:flex + justify-content + align-items（居中神器）*/
 
 /* ① 标签选择器：选中整个网页的 body，铺背景 + 让内容居中 */
 body {

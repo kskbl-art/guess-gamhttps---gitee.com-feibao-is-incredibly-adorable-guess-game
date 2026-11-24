@@ -1,34 +1,32 @@
-·<!DOCTYPE html>
-<!-- =====================================================================
-     猜数字小游戏 —— 前端页面（HTML 部分）
-     =====================================================================
-     本文件用到的知识点出处（前端1.pptx）：
+<!DOCTYPE html>
+<!----
+     猜数字小游戏 —— 前端页面（HTML 部分）：
      ① HTML 标签骨架：<html><head><body>
      ② 属性的作用：href、src、class、id、onclick 等都是"标签的附加信息"
      ③ 表单：<input type="number"> 输入框
      ④ <button> 按钮、<p> 段落、<h1> 大标题
-     ⑤ head 放"给浏览器看的信息"（比如 css 链接），body 放"给用户看的内容"
-     ===================================================================== -->
+     ⑤ head 放"给浏览器看的信息"（比如 css 链接），body 放"给用户看的内容"-->
+
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <title>猜数字小游戏</title>
-    <!-- href 属性：链接外部的 CSS 文件（前端1.pptx：属性、前端三件套关系） -->
+    <!-- href 属性：链接外部的 CSS 文件（属性、前端三件套关系） -->
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    <!-- class 属性：给元素起"类名"，CSS 里用 .card 选中它（前端2.pptx：类选择器） -->
+    <!-- class 属性：给元素起"类名"，CSS 里用 .card 选中它-->
     <div class="card">
         <h1>🎯 猜数字小游戏</h1>
-        <p>我心里想了一个 1~100 之间的整数，你能猜到吗？</p>
+        <p>我心里想了一个 1~100 之间的整数，你能猜到是多少吗？</p>
 
-        <!-- 表单输入框：type="number" 表示只能输入数字（前端1.pptx：表单） -->
+        <!-- 表单输入框：type="number" 表示只能输入数字 -->
         <input type="number" id="guessInput" min="1" max="100" placeholder="输入1~100的数字">
 
-        <!-- onclick 属性：点击按钮时执行 script.js 里的 guess() 函数（前端1.pptx：属性） -->
+        <!-- onclick 属性：点击按钮时执行 script.js 里的 guess() 函数 -->
         <button id="guessBtn" onclick="guess()">猜！</button>
 
-        <!-- id 属性：给元素起唯一名字，JS 和 CSS 都靠它找到这个元素 -->
+        <!-- id 属性：给元素起唯一名字，JS 和 CSS 都靠它找到这个元素，去显示猜大了，猜小了，猜对了的信息提示 -->
         <p id="message">游戏还没开始，先猜一个吧</p>
 
         <!-- hidden：这个按钮一开始隐藏，猜对了才显示出来 -->
