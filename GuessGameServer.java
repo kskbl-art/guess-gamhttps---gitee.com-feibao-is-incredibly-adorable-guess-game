@@ -96,7 +96,7 @@ public class GuessGameServer {
                 return;
                 //405服务器认识你，但不认可方法
             }
-
+            //{“guess”：42}
             // 读"请求体"：POST 发送的数据放在请求体里
             //   请求体就像快递箱里的货物
             String body = new String(exchange.getRequestBody().readAllBytes(),
@@ -186,7 +186,7 @@ public class GuessGameServer {
             byte[] data = Files.readAllBytes(file);
 
             // Content-Type 响应头：告诉浏览器"我发给你的是什么类型"
-            // 知识点：响应头就像快递面单上的信息
+            // 知识点：响应头就像快递面单上的信息（fastapi和常见认证.pptx：请求头和请求体）
             String contentType;
             if (fileName.endsWith(".html")) {
                 contentType = "text/html; charset=utf-8";
@@ -197,34 +197,29 @@ public class GuessGameServer {
             } else {
                 contentType = "application/octet-stream";
             }
-       /*
-    此处判断文件类型，判断文件是否是html css js 若三者都不满足，如zip，png用
-    application/octet-stream二进制流，触发浏览器默认下载
-        */
+
             // 发送响应：200 成功 + 文件内容
             exchange.getResponseHeaders().set("Content-Type", contentType);
             exchange.sendResponseHeaders(200, data.length);
-            //data。length告诉浏览器文件有多大
             OutputStream os = exchange.getResponseBody();
             os.write(data);
             os.close();
         }
     }
-
+    // ==================================================================
     // 工具方法：统一的"返回 JSON"函数，三个接口都用它，避免重复代码
-    // statusCode：HTTP 返回的状态码
+    // ==================================================================
+    // statusCode：HTTP 状态码
     //   200 = 成功；400 = 请求错误；404 = 找不到；405 = 方法不对
     //   口诀：2xx 好事，3xx 去别处，4xx 怪自己，5xx 怪服务器
+    //   （fastapi和常见认证.pptx：状态码简介）
     static void sendJson(HttpExchange exchange, int statusCode, String json)
             throws IOException {
         byte[] data = json.getBytes(StandardCharsets.UTF_8);
         exchange.getResponseHeaders().set("Content-Type", "application/json; charset=utf-8");
-        exchange.sendResponseHeaders(statusCode, data.length); 
-        //1，获取通道（传送带）
+        exchange.sendResponseHeaders(statusCode, data.length);
         OutputStream os = exchange.getResponseBody();
-        //2，把数据放到管道上（把字节数据写进去）
         os.write(data);
-        //3，关闭通道（结束发货）
         os.close();
     }
 }
